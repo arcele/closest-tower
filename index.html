@@ -22,9 +22,13 @@
           <input class="btn-primary" type="submit" value="search">
         </div>
       </form>
-
-
-
+      <div>
+        <label>Results:</label>
+          <li ng-repeat="result in tower.searchResults">
+            <label class="checkbox">
+              <span>tower {{result.tower.id}} is {{result.distance}} km away</span>
+            </label>
+          </li>
     </div>
   </body>
 </html>

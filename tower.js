@@ -10,13 +10,14 @@ angular.module('towerApp', [])
 			{ id: 2, town: 'Andover', latitude:41.750175,longitude:-72.402675, owner: 'AT&T', height: 150 },
 			{ id: 3, town: 'Andover', latitude:41.705550,longitude:-72.364361, owner: 'CL&P', height: 82 }
 		];
+		this.searchResults = []
 
 		tower.search = () => {
 			const R = 6371e3 // pretty much the earth's radius
 			const phi1 = Math.toRadians(this.searchLatitude)
 			const lam1 = Math.toRadians(this.searchLongitude)
 			var phi2, lam2, deltaPhi, deltaLam;
-			this.towers.forEach((t) => {
+			this.searchResults = this.towers.map((t) => {
 				phi2 = Math.toRadians(t.latitude) // latitude of tower
 				lam2 = Math.toRadians(t.longitude) // longitude of tower
 				deltaPhi = (phi2-phi1)
@@ -25,9 +26,10 @@ angular.module('towerApp', [])
 					Math.cos(phi1) * Math.cos(phi2) *
 					Math.sin(deltaLam/2) * Math.sin(deltaLam/2);
 				var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a))
-				var d = R * c;
-				console.log('tower is ', d, ' meters from search location')
-			});
+				var d = Math.round(R * c)/100;
+				return({ distance: d, tower: t})
+			})
+			.sort((a,b) => { return a.distance - b.distance });
 		}
 
 	});

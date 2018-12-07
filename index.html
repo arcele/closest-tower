@@ -1,0 +1,30 @@
+<!doctype html>
+<html ng-app="towerApp">
+  <head>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <script src="tower.js"></script>
+    <link rel="stylesheet" href="tower.css">
+  </head>
+  <body>
+    <div ng-controller="TowerController as tower">
+      <span>{{tower.towers.length}} towers searchable</span>
+      <div>
+      
+      <form ng-submit="tower.search()">
+        <label>Latitude:</label>
+        <input type="text" ng-model="tower.searchLatitude">
+        </div>
+        <div>
+        <label>Longitude:</label>
+        <input type="text" ng-model="tower.searchLongitude">
+        </div> 
+        <div>
+          <input class="btn-primary" type="submit" value="search">
+        </div>
+      </form>
+
+
+
+    </div>
+  </body>
+</html>

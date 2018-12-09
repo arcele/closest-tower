@@ -12,11 +12,11 @@
       
       <form ng-submit="tower.search()">
         <label>Latitude:</label>
-        <input type="text" ng-model="tower.searchLatitude">
+        <input type="text" ng-model="tower.searchLatitude" ng-value="41.758611">
         </div>
         <div>
         <label>Longitude:</label>
-        <input type="text" ng-model="tower.searchLongitude">
+        <input type="text" ng-model="tower.searchLongitude" ng-value="-72.957778">
         </div> 
         <div>
           <input class="btn-primary" type="submit" value="search">
@@ -26,7 +26,7 @@
         <label>Results:</label>
           <li ng-repeat="result in tower.searchResults">
             <label class="checkbox">
-              <span>tower {{result.tower.id}} is {{result.distance}} km away</span>
+              <span>{{result.distance}} km away from {{result.tower.Height}}ft tall {{result.tower['Tower Type']}} tower in {{result.tower.Town}}</span>
             </label>
           </li>
     </div>

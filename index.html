@@ -3,35 +3,12 @@
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
     <script src="tower.js"></script>
+    <script src="tower-search.component.js"></script>
+    <script src="tower-list.component.js"></script>
     <link rel="stylesheet" href="tower.css">
   </head>
   <body>
-    <div ng-controller="TowerController as tower">
-      <span>{{towers.length}} towers searchable</span>
-      
-      <form ng-submit="tower.search()">
-        <div>
-        <label>Latitude:</label>
-        <input type="text" ng-model="tower.searchLatitude">
-        </div>
-        <div>
-        <label>Longitude:</label>
-        <input type="text" ng-model="tower.searchLongitude">
-        </div> 
-        <div>
-        <label>Max Distance (km):</label>
-        <input type="text" ng-model="tower.maxSearchDistance">
-        <div>
-          <input class="btn-primary" type="submit" value="search">
-        </div>
-      </form>
-      <div>
-        <label>Results:</label>
-          <li ng-repeat="result in tower.searchResults">
-            <label class="checkbox">
-              <span>{{result.distance}} km away from {{result.tower.Height}}ft tall {{result.tower['Tower Type']}} tower in {{result.tower.Town}}</span>
-            </label>
-          </li>
-    </div>
+    <tower-search></tower-search>
+    <tower-list></tower-list>
   </body>
 </html>
